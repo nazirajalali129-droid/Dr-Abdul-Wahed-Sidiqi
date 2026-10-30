@@ -27,45 +27,9 @@ export default function Contact() {
 
         {/* MAP & CONTACT INFO GRID */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
-          {/* LEFT SIDE: Working Google Map */}
+          {/* LEFT SIDE: Contact Info Cards (Moved to first) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 h-[500px]"
-          >
-            <iframe
-              title="Ariana Medical Complex Location"
-              src="https://maps.google.com/maps?q=Ariana%20Medical%20Complex%2C%20Kabul%2C%20Afghanistan&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full object-cover grayscale-[10%] contrast-125"
-            ></iframe>
-
-            {/* Floating Address Badge on Map */}
-            <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-white/50 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-start gap-4">
-              <div className="bg-[#00a8ff] p-2.5 rounded-xl text-white shadow-sm shrink-0">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-900 text-lg">
-                  Ariana Medical Complex
-                </h4>
-                <p className="text-sm text-slate-600 mt-1 font-medium">
-                  Afshar Area, Phase 5, Kabul, Afghanistan
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT SIDE: Contact Info Cards (Blue to Red Hover) */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -141,6 +105,42 @@ export default function Contact() {
                     Mon - Fri: 9:00 AM - 5:00 PM
                   </p>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT SIDE: Working Google Map (Moved to second) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 h-[500px]"
+          >
+            <iframe
+              title="Ariana Medical Complex Location"
+              src="https://maps.google.com/maps?q=Ariana%20Medical%20Complex%2C%20Kabul%2C%20Afghanistan&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full object-cover grayscale-[10%] contrast-125"
+            ></iframe>
+
+            {/* Floating Address Badge on Map */}
+            <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-white/50 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-start gap-4">
+              <div className="bg-[#00a8ff] p-2.5 rounded-xl text-white shadow-sm shrink-0">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 text-lg">
+                  Ariana Medical Complex
+                </h4>
+                <p className="text-sm text-slate-600 mt-1 font-medium">
+                  Afshar Area, Phase 5, Kabul, Afghanistan
+                </p>
               </div>
             </div>
           </motion.div>
