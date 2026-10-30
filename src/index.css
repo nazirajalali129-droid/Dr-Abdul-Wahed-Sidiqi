@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+/* Never allow sideways scrolling on phones (decorative glows extend past the edge) */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dari & Pashto (right-to-left, Arabic script)                        */
+/* ------------------------------------------------------------------ */
+
+/* Arabic-script font for every element; Latin text falls back gracefully */
+html[dir="rtl"],
+html[dir="rtl"] * {
+  font-family: "Noto Sans Arabic", "Vazirmatn", Tahoma, "Segoe UI", Arial,
+    sans-serif;
+}
+
+/* Letter-spacing, uppercase and italics break joined Arabic letters */
+html[dir="rtl"] * {
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: normal;
+}
+
+/* Arabic script needs more vertical room for its marks */
+html[dir="rtl"] body {
+  line-height: 1.8;
+}
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4 {
+  line-height: 1.5;
+}
+
+/* Arrows should point in the reading direction */
+html[dir="rtl"] svg.lucide-arrow-right {
+  transform: scaleX(-1);
+}

@@ -9,8 +9,12 @@ import {
   Award,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/context";
 
 export default function ServicesSection() {
+  const { t } = useLanguage();
+  const s = t.servicesSection;
+
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -31,11 +35,10 @@ export default function ServicesSection() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-            Our Medical <span className="text-[#00a8ff]">Services</span>
+            {s.title1}<span className="text-[#00a8ff]">{s.title2}</span>
           </h2>
           <p className="text-slate-600 text-lg">
-            Providing comprehensive cardiovascular care using state-of-the-art
-            technology and internationally recognized protocols.
+            {s.desc}
           </p>
         </div>
 
@@ -60,18 +63,16 @@ export default function ServicesSection() {
             </div>
 
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              Invasive Cardiology
+              {s.invasiveTitle}
             </h3>
             <p className="text-slate-600 mb-8 text-sm leading-relaxed">
-              Master's level expertise in minimally invasive procedures,
-              including cardiac catheterization and stent placement for chronic
-              coronary artery disease.
+              {s.invasiveDesc}
             </p>
 
             {/* Badge - Changes to Blue on Hover */}
             <div className="bg-white text-red-600 px-4 py-2 rounded-full text-sm font-bold w-fit flex items-center gap-2 border border-red-100 shadow-sm transition-all duration-300 group-hover:text-[#00a8ff] group-hover:border-blue-100">
               <Award size={16} />
-              FESC Recognized
+              {s.fesc}
             </div>
           </motion.div>
 
@@ -84,11 +85,10 @@ export default function ServicesSection() {
               <Activity size={24} />
             </div>
             <h4 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#00a8ff] transition-colors">
-              Echocardiography
+              {s.echoTitle}
             </h4>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Advanced ultrasound imaging to evaluate heart valves and chambers.
-              Developed structured training for over 100 physicians.
+              {s.echoDesc}
             </p>
           </motion.div>
 
@@ -101,11 +101,10 @@ export default function ServicesSection() {
               <Stethoscope size={24} />
             </div>
             <h4 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#00a8ff] transition-colors">
-              ECG & Stress Tests
+              {s.ecgTitle}
             </h4>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Standardized electrocardiography to detect arrhythmias and
-              coronary artery disease under exertion.
+              {s.ecgDesc}
             </p>
           </motion.div>
 
@@ -118,11 +117,10 @@ export default function ServicesSection() {
               <Microscope size={24} />
             </div>
             <h4 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#00a8ff] transition-colors">
-              Vascular Doppler
+              {s.dopplerTitle}
             </h4>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Non-invasive ultrasound testing to evaluate blood flow in major
-              arteries and veins, aiding in preventive cardiology.
+              {s.dopplerDesc}
             </p>
           </motion.div>
 
@@ -135,11 +133,10 @@ export default function ServicesSection() {
               <ShieldCheck size={24} />
             </div>
             <h4 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#00a8ff] transition-colors">
-              Emergency Cardiac Care
+              {s.emergencyTitle}
             </h4>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Advanced Cardiovascular Life Support (ACLS) and emergency response
-              based on published CPR guidelines.
+              {s.emergencyDesc}
             </p>
           </motion.div>
         </motion.div>
@@ -150,7 +147,7 @@ export default function ServicesSection() {
             to="/services"
             className="inline-flex items-center gap-2 bg-[#00a8ff] hover:bg-[#0096e0] text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_10px_20px_rgba(0,168,255,0.3)] hover:-translate-y-1"
           >
-            More Services
+            {s.more}
             <ArrowRight size={20} />
           </Link>
         </div>

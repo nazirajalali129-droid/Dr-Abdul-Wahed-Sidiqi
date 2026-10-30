@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "../i18n/context";
 
 export default function StatsMarquee() {
-  // 100% REAL information from Dr. Sidiqi's biography
-  const stats = [
-    { value: "20+", label: "Years of Experience" }, // Graduated 2001
-    { value: "100+", label: "Doctors Trained" }, // Trained over 100 physicians
-    { value: "10+", label: "Scientific Publications" }, // Circulation, PubMed, etc.
-    { value: "3+", label: "Institutions Founded" }, // Ariana Hospital, Complex, ACA
-  ];
+  const { t } = useLanguage();
+
+  // Values come from Dr. Sidiqi's biography; labels are translated
+  const values = ["20+", "100+", "10+", "3+"];
+  const stats = values.map((value, i) => ({ value, label: t.stats[i] }));
 
   return (
     <div className="bg-slate-50 py-8 border-y border-slate-200 overflow-hidden">

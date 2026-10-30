@@ -1,7 +1,18 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/context";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const f = t.footer;
+
+  const links = [
+    { name: f.links.home, path: "/" },
+    { name: f.links.about, path: "/about" },
+    { name: f.links.services, path: "/services" },
+    { name: f.links.contact, path: "/contact" },
+  ];
+
   return (
     <footer className="relative bg-[#041229] pt-20 pb-10 border-t border-slate-800 overflow-hidden">
       {/* Subtle dark-mode background glows */}
@@ -9,40 +20,33 @@ export default function Footer() {
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-red-600 rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
-        {/* Brand Section (Icon Removed) */}
+        {/* Brand Section */}
         <div className="col-span-1 md:col-span-2">
           <Link to="/" className="inline-block mb-6 text-white">
             <span className="text-2xl font-extrabold tracking-tight">
-              DR. ABDUL WAHED SIDIQI
+              {t.nav.name}
             </span>
           </Link>
 
           <p className="text-slate-400 max-w-sm mb-8 leading-relaxed text-sm">
-            Dedicated to providing exceptional cardiovascular care, advancing
-            medical education, and improving heart health in Afghanistan.
+            {f.desc}
           </p>
           <p className="text-xs text-slate-500 font-medium">
-            &copy; {new Date().getFullYear()} Ariana Medical Complex. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {f.rights}
           </p>
         </div>
 
         {/* Quick Links */}
         <div>
           <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">
-            Quick Links
+            {f.quickLinks}
           </h4>
           <ul className="space-y-3 text-sm font-medium">
-            {[
-              { name: "Home", path: "/" },
-              { name: "About Biography", path: "/about" },
-              { name: "Services", path: "/services" },
-              { name: "Contact", path: "/contact" },
-            ].map((link) => (
-              <li key={link.name}>
+            {links.map((link) => (
+              <li key={link.path}>
                 <Link
                   to={link.path}
-                  className="text-slate-400 hover:text-[#00a8ff] hover:translate-x-1 inline-block transition-all duration-300"
+                  className="text-slate-400 hover:text-[#00a8ff] hover:translate-x-1 rtl:hover:-translate-x-1 inline-block transition-all duration-300"
                 >
                   {link.name}
                 </Link>
@@ -54,7 +58,7 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">
-            Contact
+            {f.contactTitle}
           </h4>
           <ul className="space-y-4 text-sm font-medium">
             <li className="flex items-start gap-3 group">
@@ -62,9 +66,9 @@ export default function Footer() {
                 <MapPin size={18} className="text-[#00a8ff] shrink-0" />
               </div>
               <span className="mt-1 text-slate-400">
-                Ariana Medical Complex,
+                {f.addressLine1}
                 <br />
-                Kabul, Afghanistan
+                {f.addressLine2}
               </span>
             </li>
             <li className="flex items-center gap-3 group">
@@ -73,6 +77,7 @@ export default function Footer() {
               </div>
               <a
                 href="tel:+93781111191"
+                dir="ltr"
                 className="text-slate-400 hover:text-[#00a8ff] transition-colors mt-1"
               >
                 +93 781 111 191
@@ -84,6 +89,7 @@ export default function Footer() {
               </div>
               <a
                 href="mailto:a.sidiqi@aca.af"
+                dir="ltr"
                 className="text-slate-400 hover:text-[#00a8ff] transition-colors mt-1"
               >
                 a.sidiqi@aca.af

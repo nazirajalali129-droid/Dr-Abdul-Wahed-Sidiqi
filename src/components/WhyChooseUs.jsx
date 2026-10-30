@@ -9,37 +9,21 @@ import {
   HeartPulse,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/context";
 
 export default function WhyChooseUs() {
-  const features = [
-    {
-      title: "25+ Years of Excellence",
-      desc: "With over two decades of dedicated medical practice since graduating in 2001, Dr. Sidiqi has established himself as a leading figure in Afghan cardiology.",
-      icon: Award,
-    },
-    {
-      title: "International Expertise",
-      desc: "As a Fellow of the European Society of Cardiology (FESC) and a member of the World Heart Association, Dr. Sidiqi brings global standards to local care.",
-      icon: Globe,
-    },
-    {
-      title: "Advanced Diagnostics",
-      desc: "Dr. Sidiqi pioneered structured Echocardiography and ECG training in Afghanistan, personally training over 100 physicians.",
-      icon: Activity,
-    },
-    {
-      title: "Comprehensive Patient Care",
-      desc: "From preventive cardiology and lifestyle management to emergency cardiac care (ACLS) and invasive procedures, we offer a full spectrum of services.",
-      icon: HeartPulse,
-    },
-  ];
+  const { t } = useLanguage();
+  const w = t.why;
+
+  const icons = [Award, Globe, Activity, HeartPulse];
+  const features = w.features.map((f, i) => ({ ...f, icon: icons[i] }));
 
   return (
     <>
       {/* ========================================= */}
       {/* WHY CHOOSE US SECTION (Clean & Creative)  */}
       {/* ========================================= */}
-      <section className="relative py-24 bg-slate-50 overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-slate-50 overflow-hidden">
         {/* Creative Background Elements */}
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-50 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 pointer-events-none"></div>
@@ -50,18 +34,17 @@ export default function WhyChooseUs() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="w-8 h-[2px] bg-[#00a8ff]" />
               <span className="text-[#00a8ff] text-xs font-bold tracking-[0.3em] uppercase">
-                Why Choose Us
+                {w.eyebrow}
               </span>
               <span className="w-8 h-[2px] bg-[#00a8ff]" />
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-6">
-              Why Patients Choose Our Clinic
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-slate-900 mb-6">
+              {w.title}
             </h2>
 
             <p className="text-slate-600 text-lg leading-relaxed">
-              Dedicated to providing exceptional cardiovascular care, advancing
-              medical education, and improving heart health in Afghanistan.
+              {w.desc}
             </p>
           </div>
 
@@ -100,7 +83,7 @@ export default function WhyChooseUs() {
                   {/* Bottom Footer Note */}
                   <div className="flex items-center gap-2 text-xs font-medium text-slate-400 mt-auto pt-4 border-t border-slate-100 relative z-10">
                     <Clock size={14} className="shrink-0 text-[#00a8ff]" />
-                    <p>Verified medical credentials</p>
+                    <p>{w.verified}</p>
                   </div>
                 </motion.div>
               );
@@ -118,20 +101,18 @@ export default function WhyChooseUs() {
 
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-            Have Concerns About Your Heart?
+            {w.ctaTitle}
           </h2>
           <p className="text-slate-600 text-lg mb-8">
-            Dr. Sidiqi and his expert team at Ariana Medical Complex are ready
-            to help. Don't wait—take the first step towards a healthier heart
-            today.
+            {w.ctaDesc}
           </p>
 
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 bg-[#00a8ff] hover:bg-[#0096e0] text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_10px_20px_rgba(0,168,255,0.3)] hover:-translate-y-1"
+            className="inline-flex items-center justify-center text-center gap-3 bg-[#00a8ff] hover:bg-[#0096e0] text-white px-6 sm:px-8 py-4 rounded-full font-bold text-sm sm:text-base transition-all shadow-[0_10px_20px_rgba(0,168,255,0.3)] hover:-translate-y-1"
           >
             <Phone size={20} />
-            Contact Us / Book Appointment
+            {w.ctaButton}
             <ArrowRight size={20} />
           </Link>
         </div>
